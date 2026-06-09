@@ -33,6 +33,9 @@
         a:hover { color: #551a8b; }
         
         .nav-link { margin-right: 15px; font-weight: bold; }
+        .card-link { color: #0000ee; text-decoration: underline; cursor: pointer; }
+        .card-link:hover { color: #551a8b; }
+        .dead-link { color: #ba0000; text-decoration: underline; cursor: default; }
         .card-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -109,7 +112,20 @@
             history.replaceState(null, '', qs ? '?' + qs : location.pathname);
         }
 
+        function linkifyText(text) {
+            const replacer = (match, name) => {
+                const card = cards.find(c => c.name === name);
+                if (card) {
+                    const id = getCardId(card.name);
+                    return `<a href="?card=${id}" onclick="event.preventDefault();showPage('detail-${id}')" class="card-link">${match}</a>`;
+                }
+                return `<span class="dead-link">${match}</span>`;
+            };
+            return text.replace(/《([^》]+)》/g, replacer).replace(/「([^」]+)」/g, replacer);
+        }
+
         function renderHome() {
+            const bellId = getCardId('覇王 ベル=アザロス');
             return `
                 <section id="home" class="wiki-card-container">
                     <h2 class="text-xl font-bold border-b-2 border-black mb-4">更新情報</h2>
@@ -118,8 +134,10 @@
                     </div>
                     <h2 class="text-xl font-bold border-b-2 border-black mt-8 mb-4">注目のカード</h2>
                     <div class="border-box p-4">
-                        <img src="https://i.imgur.com/GWm19XM.png" class="w-full h-auto border border-black mb-2">
-                        <h3 class="font-bold text-lg">覇王 ベル＝アザロス</h3>
+                        <a href="?card=${bellId}" onclick="event.preventDefault();showPage('detail-${bellId}')">
+                            <img src="https://i.imgur.com/GWm19XM.png" class="w-full h-auto border border-black mb-2">
+                            <h3 class="font-bold text-lg text-blue-700 underline">覇王 ベル＝アザロス</h3>
+                        </a>
                         <p class="text-sm">登場時、対戦相手の墓地を全て除外する。コントロールデッキの終着点。</p>
                     </div>
                 </section>`;
@@ -149,6 +167,7 @@
                         <tr><td class="font-bold w-16 border p-1">コスト</td><td class="border p-1">${card.cost}</td></tr>
                         <tr><td class="font-bold w-16 border p-1">タイプ</td><td class="border p-1">${card.type}</td></tr>
                         ${card.stats ? `<tr><td class="font-bold w-16 border p-1">ステータス</td><td class="border p-1">${card.stats}</td></tr>` : ''}
+                        ${card.tier ? `<tr><td class="font-bold w-16 border p-1">Tier</td><td class="border p-1 font-bold">${card.tier}</td></tr>` : ''}
                     </table>
                     <div class="border-box p-2 bg-gray-50 mb-4">
                         <h4 class="font-bold border-b border-black mb-2">効果</h4>
@@ -159,12 +178,12 @@
                     ${card.evaluation ? `
                     <div class="mt-4">
                         <h3 class="text-lg font-bold border-b-2 border-black mb-3">解説</h3>
-                        <p class="text-sm leading-relaxed">${card.evaluation}</p>
+                        <p class="text-sm leading-relaxed">${linkifyText(card.evaluation)}</p>
                     </div>` : ''}
                     ${card.synergy ? `
                     <div class="mt-5">
                         <h3 class="text-lg font-bold border-b-2 border-black mb-3">関連カード・コンボ</h3>
-                        <p class="text-sm leading-relaxed">${card.synergy}</p>
+                        <p class="text-sm leading-relaxed">${linkifyText(card.synergy)}</p>
                     </div>` : ''}
                 </section>`;
         }
