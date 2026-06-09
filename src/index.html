@@ -185,6 +185,11 @@
                         <h3 class="text-lg font-bold border-b-2 border-black mb-3">関連カード・コンボ</h3>
                         <p class="text-sm leading-relaxed">${linkifyText(card.synergy)}</p>
                     </div>` : ''}
+                    ${card.trivia ? `
+                    <div class="mt-5">
+                        <h3 class="text-lg font-bold border-b-2 border-black mb-3">余談</h3>
+                        <p class="text-sm leading-relaxed">${card.trivia}</p>
+                    </div>` : ''}
                 </section>`;
         }
 
