@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オリジナルTCG Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { 
+            background-color: #e5e5e5; 
+            font-family: "MS PGothic", "ＭＳ Ｐゴシック", sans-serif;
+            color: #000;
+        }
+        .wiki-container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: #ffffff;
+            border-left: 2px solid #000;
+            border-right: 2px solid #000;
+            min-height: 100vh;
+        }
+        .wiki-header { 
+            background: #000080; 
+            color: #fff; 
+            padding: 10px;
+            border-bottom: 4px solid #cc0000;
+        }
+        .wiki-card-container { display: none; }
+        .active { display: block; }
+        
+        table, .border-box { border: 1px solid #000; }
+        a { color: #0000ee; text-decoration: underline; }
+        a:hover { color: #551a8b; }
+        
+        .nav-link { margin-right: 15px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="wiki-container">
+        <header class="wiki-header">
+            <h1 class="text-2xl font-bold">オリジナルTCG Wiki</h1>
+            <nav class="mt-2 text-sm bg-white p-1 text-black">
+                <a href="#" onclick="showPage('home')" class="nav-link">[トップ]</a>
+                <a href="#" onclick="showPage('cards')" class="nav-link">[カード一覧]</a>
+            </nav>
+        </header>
+
+        <main class="p-5">
+            <section id="home" class="wiki-card-container active">
+                <h2 class="text-xl font-bold border-b-2 border-black mb-4">更新情報</h2>
+                <div class="border-box p-4 bg-gray-100">
+                    <p class="text-sm">2026/06/09 デザインを古典的スタイルへ変更しました。</p>
+                </div>
+                
+                <h2 class="text-xl font-bold border-b-2 border-black mt-8 mb-4">注目のカード</h2>
+                <div class="border-box p-4">
+                    <img src="https://i.imgur.com/GWm19XM.png" class="w-full h-auto border border-black mb-2">
+                    <h3 class="font-bold text-lg">覇王 ベル＝アザロス</h3>
+                    <p class="text-sm">登場時、対戦相手の墓地を全て除外する。コントロールデッキの終着点。</p>
+                </div>
+            </section>
+
+            <section id="cards" class="wiki-card-container">
+                <h2 class="text-xl font-bold border-b-2 border-black mb-4">カード図鑑</h2>
+                <ul class="list-disc pl-5">
+                    <li><a href="#" onclick="showPage('detail-wedge')">契約の楔</a></li>
+                    <li><a href="#" onclick="showPage('detail-lieselotte')">戦姫 リーゼロッテ</a></li>
+                    <li><a href="#" onclick="showPage('detail-shen')">剛天寺 マスター・シェン</a></li>
+                    <li><a href="#" onclick="showPage('detail-puyuyu')">海賊王 ぷゆゆ</a></li>
+                    <li><a href="#" onclick="showPage('detail-bell')">覇王 ベル＝アザロス</a></li>
+                </ul>
+            </section>
+
+            <section id="detail-wedge" class="wiki-card-container">
+                <a href="#" onclick="showPage('cards')">&lt;&lt; 一覧へ戻る</a>
+                <h2 class="text-2xl font-bold border-b-2 border-black mt-4 mb-2">契約の楔</h2>
+                <img src="https://i.imgur.com/oXQx6Yv.png" class="w-64 border border-black mb-4">
+                <div class="border-box p-4 bg-gray-50">
+                    <h4 class="font-bold border-b border-black mb-2">戦術的考察</h4>
+                    <p class="text-sm">デッキ圧縮のための必須カード。1マナでドローまたは盤面干渉ができるのは強力。4枚積みが基本。</p>
+                </div>
+            </section>
+
+            <section id="detail-lieselotte" class="wiki-card-container">
+                <a href="#" onclick="showPage('cards')">&lt;&lt; 一覧へ戻る</a>
+                <h2 class="text-2xl font-bold border-b-2 border-black mt-4 mb-2">戦姫 リーゼロッテ</h2>
+                <img src="https://i.imgur.com/De7YilL.png" class="w-64 border border-black mb-4">
+                <div class="border-box p-4 bg-gray-50">
+                    <h4 class="font-bold border-b border-black mb-2">戦術的考察</h4>
+                    <p class="text-sm">3コスト除去ユニット。テンポアドバンテージを稼ぐための基本カード。</p>
+                </div>
+            </section>
+
+            <section id="detail-shen" class="wiki-card-container">
+                <a href="#" onclick="showPage('cards')">&lt;&lt; 一覧へ戻る</a>
+                <h2 class="text-2xl font-bold border-b-2 border-black mt-4 mb-2">剛天寺 マスター・シェン</h2>
+                <img src="https://i.imgur.com/JxqsMZC.png" class="w-64 border border-black mb-4">
+                <div class="border-box p-4 bg-gray-50">
+                    <h4 class="font-bold border-b border-black mb-2">戦術的考察</h4>
+                    <p class="text-sm">速攻と貫通による盤面突破能力が売り。フィニッシャーとしての適性を持つ。</p>
+                </div>
+            </section>
+
+            <section id="detail-puyuyu" class="wiki-card-container">
+                <a href="#" onclick="showPage('cards')">&lt;&lt; 一覧へ戻る</a>
+                <h2 class="text-2xl font-bold border-b-2 border-black mt-4 mb-2">海賊王 ぷゆゆ</h2>
+                <img src="https://i.imgur.com/GWm19XM.png" class="w-64 border border-black mb-4">
+                <div class="border-box p-4 bg-gray-50">
+                    <h4 class="font-bold border-b border-black mb-2">戦術的考察</h4>
+                    <p class="text-sm">全体破壊能力。構築次第で自分だけ無被害にできる可能性があるメタカード。</p>
+                </div>
+            </section>
+
+            <section id="detail-bell" class="wiki-card-container">
+                <a href="#" onclick="showPage('cards')">&lt;&lt; 一覧へ戻る</a>
+                <h2 class="text-2xl font-bold border-b-2 border-black mt-4 mb-2">覇王 ベル＝アザロス</h2>
+                <img src="https://i.imgur.com/GWm19XM.png" class="w-64 border border-black mb-4">
+                <div class="border-box p-4 bg-gray-50">
+                    <h4 class="font-bold border-b border-black mb-2">戦術的考察</h4>
+                    <p class="text-sm">墓地対策と圧倒的スタッツ。コントロールのフィニッシャー。</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.wiki-card-container').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
