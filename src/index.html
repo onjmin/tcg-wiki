@@ -33,6 +33,44 @@
         a:hover { color: #551a8b; }
         
         .nav-link { margin-right: 15px; font-weight: bold; }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        @media (min-width: 500px) {
+            .card-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (min-width: 680px) {
+            .card-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        .card-grid a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .card-grid .card-cell {
+            border: 1px solid #000;
+            background: #fff;
+            overflow: hidden;
+            transition: box-shadow 0.15s;
+        }
+        .card-grid .card-cell:hover {
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+        }
+        .card-grid .card-cell img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 640 / 907;
+            object-fit: cover;
+            border-bottom: 1px solid #000;
+        }
+        .card-grid .card-cell .card-label {
+            padding: 4px 6px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.2;
+        }
     </style>
 </head>
 <body>
@@ -43,93 +81,142 @@
             <nav class="mt-2 text-sm bg-white p-1 text-black">
                 <a href="#" onclick="showPage('home')" class="nav-link">[トップ]</a>
                 <a href="#" onclick="showPage('cards')" class="nav-link">[カード一覧]</a>
+                <a href="#" onclick="showPage('gallery')" class="nav-link">[ギャラリー]</a>
             </nav>
         </header>
 
-        <main class="p-5">
-            <section id="home" class="wiki-card-container active">
-                <h2 class="text-xl font-bold border-b-2 border-black mb-4">更新情報</h2>
-                <div class="border-box p-4 bg-gray-100">
-                    <p class="text-sm">2026/06/09 デザインを古典的スタイルへ変更しました。</p>
-                </div>
-                
-                <h2 class="text-xl font-bold border-b-2 border-black mt-8 mb-4">注目のカード</h2>
-                <div class="border-box p-4">
-                    <img src="https://i.imgur.com/GWm19XM.png" class="w-full h-auto border border-black mb-2">
-                    <h3 class="font-bold text-lg">覇王 ベル＝アザロス</h3>
-                    <p class="text-sm">登場時、対戦相手の墓地を全て除外する。コントロールデッキの終着点。</p>
-                </div>
-            </section>
-
-            <section id="cards" class="wiki-card-container">
-                <h2 class="text-xl font-bold border-b-2 border-black mb-4">カード図鑑</h2>
-                <ul class="list-disc pl-5">
-                    <li><a href="#" onclick="showPage('detail-wedge')">契約の楔</a></li>
-                    <li><a href="#" onclick="showPage('detail-lieselotte')">戦姫 リーゼロッテ</a></li>
-                    <li><a href="#" onclick="showPage('detail-shen')">剛天寺 マスター・シェン</a></li>
-                    <li><a href="#" onclick="showPage('detail-puyuyu')">海賊王 ぷゆゆ</a></li>
-                    <li><a href="#" onclick="showPage('detail-bell')">覇王 ベル＝アザロス</a></li>
-                </ul>
-            </section>
-
-            <section id="detail-wedge" class="wiki-card-container">
-                <a href="#" onclick="showPage('cards')">&lt;&lt; 一覧へ戻る</a>
-                <h2 class="text-2xl font-bold border-b-2 border-black mt-4 mb-2">契約の楔</h2>
-                <img src="https://i.imgur.com/oXQx6Yv.png" class="w-64 border border-black mb-4">
-                <div class="border-box p-4 bg-gray-50">
-                    <h4 class="font-bold border-b border-black mb-2">戦術的考察</h4>
-                    <p class="text-sm">デッキ圧縮のための必須カード。1マナでドローまたは盤面干渉ができるのは強力。4枚積みが基本。</p>
-                </div>
-            </section>
-
-            <section id="detail-lieselotte" class="wiki-card-container">
-                <a href="#" onclick="showPage('cards')">&lt;&lt; 一覧へ戻る</a>
-                <h2 class="text-2xl font-bold border-b-2 border-black mt-4 mb-2">戦姫 リーゼロッテ</h2>
-                <img src="https://i.imgur.com/De7YilL.png" class="w-64 border border-black mb-4">
-                <div class="border-box p-4 bg-gray-50">
-                    <h4 class="font-bold border-b border-black mb-2">戦術的考察</h4>
-                    <p class="text-sm">3コスト除去ユニット。テンポアドバンテージを稼ぐための基本カード。</p>
-                </div>
-            </section>
-
-            <section id="detail-shen" class="wiki-card-container">
-                <a href="#" onclick="showPage('cards')">&lt;&lt; 一覧へ戻る</a>
-                <h2 class="text-2xl font-bold border-b-2 border-black mt-4 mb-2">剛天寺 マスター・シェン</h2>
-                <img src="https://i.imgur.com/JxqsMZC.png" class="w-64 border border-black mb-4">
-                <div class="border-box p-4 bg-gray-50">
-                    <h4 class="font-bold border-b border-black mb-2">戦術的考察</h4>
-                    <p class="text-sm">速攻と貫通による盤面突破能力が売り。フィニッシャーとしての適性を持つ。</p>
-                </div>
-            </section>
-
-            <section id="detail-puyuyu" class="wiki-card-container">
-                <a href="#" onclick="showPage('cards')">&lt;&lt; 一覧へ戻る</a>
-                <h2 class="text-2xl font-bold border-b-2 border-black mt-4 mb-2">海賊王 ぷゆゆ</h2>
-                <img src="https://i.imgur.com/GWm19XM.png" class="w-64 border border-black mb-4">
-                <div class="border-box p-4 bg-gray-50">
-                    <h4 class="font-bold border-b border-black mb-2">戦術的考察</h4>
-                    <p class="text-sm">全体破壊能力。構築次第で自分だけ無被害にできる可能性があるメタカード。</p>
-                </div>
-            </section>
-
-            <section id="detail-bell" class="wiki-card-container">
-                <a href="#" onclick="showPage('cards')">&lt;&lt; 一覧へ戻る</a>
-                <h2 class="text-2xl font-bold border-b-2 border-black mt-4 mb-2">覇王 ベル＝アザロス</h2>
-                <img src="https://i.imgur.com/GWm19XM.png" class="w-64 border border-black mb-4">
-                <div class="border-box p-4 bg-gray-50">
-                    <h4 class="font-bold border-b border-black mb-2">戦術的考察</h4>
-                    <p class="text-sm">墓地対策と圧倒的スタッツ。コントロールのフィニッシャー。</p>
-                </div>
-            </section>
+        <main class="p-5" id="main-content">
         </main>
     </div>
 
     <script>
+        let cards = [];
+
+        function getCardId(name) {
+            return name.replace(/[=\s]/g, '-').replace(/[ぁ-んー]/g, '').toLowerCase() || 'card';
+        }
+
         function showPage(pageId) {
             document.querySelectorAll('.wiki-card-container').forEach(sec => sec.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
+            const target = document.getElementById(pageId);
+            if (target) target.classList.add('active');
             window.scrollTo(0, 0);
+            const params = new URLSearchParams(location.search);
+            if (pageId === 'home') params.delete('card');
+            else if (pageId === 'cards' || pageId === 'gallery') params.delete('card');
+            else if (pageId.startsWith('detail-')) params.set('card', pageId.replace('detail-', ''));
+            const qs = params.toString();
+            history.replaceState(null, '', qs ? '?' + qs : location.pathname);
         }
+
+        function renderHome() {
+            return `
+                <section id="home" class="wiki-card-container">
+                    <h2 class="text-xl font-bold border-b-2 border-black mb-4">更新情報</h2>
+                    <div class="border-box p-4 bg-gray-100">
+                        <p class="text-sm">2026/06/09 wikiを開設しました。</p>
+                    </div>
+                    <h2 class="text-xl font-bold border-b-2 border-black mt-8 mb-4">注目のカード</h2>
+                    <div class="border-box p-4">
+                        <img src="https://i.imgur.com/GWm19XM.png" class="w-full h-auto border border-black mb-2">
+                        <h3 class="font-bold text-lg">覇王 ベル＝アザロス</h3>
+                        <p class="text-sm">登場時、対戦相手の墓地を全て除外する。コントロールデッキの終着点。</p>
+                    </div>
+                </section>`;
+        }
+
+        function renderCardList() {
+            const items = cards.map(c => {
+                const id = getCardId(c.name);
+                return `<li><a href="?card=${id}" onclick="event.preventDefault();showPage('detail-${id}')">${c.name}</a></li>`;
+            }).join('');
+            return `
+                <section id="cards" class="wiki-card-container">
+                    <h2 class="text-xl font-bold border-b-2 border-black mb-4">カード図鑑</h2>
+                    <ul class="list-disc pl-5">${items}</ul>
+                </section>`;
+        }
+
+        function renderCardDetail(card) {
+            const id = getCardId(card.name);
+            const effectsHtml = card.effects.map(e => `<li class="text-sm ml-4">${e}</li>`).join('');
+            return `
+                <section id="detail-${id}" class="wiki-card-container">
+                    <a href="?card=cards" onclick="event.preventDefault();showPage('cards')">&lt;&lt; 一覧へ戻る</a>
+                    <h2 class="text-2xl font-bold border-b-2 border-black mt-4 mb-2">${card.name}</h2>
+                    <img src="${card.image_url}" class="w-64 border border-black mb-4">
+                    <table class="w-full mb-4 text-sm">
+                        <tr><td class="font-bold w-16 border p-1">コスト</td><td class="border p-1">${card.cost}</td></tr>
+                        <tr><td class="font-bold w-16 border p-1">タイプ</td><td class="border p-1">${card.type}</td></tr>
+                        ${card.stats ? `<tr><td class="font-bold w-16 border p-1">ステータス</td><td class="border p-1">${card.stats}</td></tr>` : ''}
+                    </table>
+                    <div class="border-box p-2 bg-gray-50 mb-4">
+                        <h4 class="font-bold border-b border-black mb-2">効果</h4>
+                        <ul class="list-disc">${effectsHtml}</ul>
+                    </div>
+                    ${card.flavor_text ? `<div class="border-box p-2 bg-gray-50 italic text-sm">${card.flavor_text}</div>` : ''}
+                    <hr class="mt-6 border-t-2 border-gray-300">
+                    ${card.evaluation ? `
+                    <div class="mt-4">
+                        <h3 class="text-lg font-bold border-b-2 border-black mb-3">解説</h3>
+                        <p class="text-sm leading-relaxed">${card.evaluation}</p>
+                    </div>` : ''}
+                    ${card.synergy ? `
+                    <div class="mt-5">
+                        <h3 class="text-lg font-bold border-b-2 border-black mb-3">関連カード・コンボ</h3>
+                        <p class="text-sm leading-relaxed">${card.synergy}</p>
+                    </div>` : ''}
+                </section>`;
+        }
+
+        function renderCardGallery() {
+            const items = cards.map(c => {
+                const id = getCardId(c.name);
+                return `<a href="?card=${id}" onclick="event.preventDefault();showPage('detail-${id}')">
+                    <div class="card-cell">
+                        <img src="${c.image_url}" alt="${c.name}" loading="lazy">
+                        <div class="card-label">${c.name}</div>
+                    </div>
+                </a>`;
+            }).join('');
+            return `
+                <section id="gallery" class="wiki-card-container">
+                    <h2 class="text-xl font-bold border-b-2 border-black mb-4">カードギャラリー</h2>
+                    <div class="card-grid">${items}</div>
+                </section>`;
+        }
+
+        function renderAll() {
+            const main = document.getElementById('main-content');
+            let html = renderHome();
+            html += renderCardList();
+            html += renderCardGallery();
+            cards.forEach(c => { html += renderCardDetail(c); });
+            main.innerHTML = html;
+
+            const params = new URLSearchParams(location.search);
+            const cardParam = params.get('card');
+            if (cardParam) {
+                showPage('detail-' + cardParam);
+            } else {
+                document.getElementById('home').classList.add('active');
+            }
+        }
+
+        fetch('data/cards.json')
+            .then(res => res.json())
+            .then(data => {
+                cards = data;
+                renderAll();
+            })
+            .catch(err => {
+                console.error('Failed to load cards:', err);
+                document.getElementById('main-content').innerHTML = `
+                    <section id="home" class="wiki-card-container active">
+                        <h2 class="text-xl font-bold border-b-2 border-black mb-4">エラー</h2>
+                        <p>カードデータの読み込みに失敗しました。</p>
+                    </section>`;
+            });
     </script>
 </body>
 </html>
